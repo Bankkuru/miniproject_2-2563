@@ -19,15 +19,15 @@ const index = () => {
     mutate(URL, data);
   }
 
-  const showStudents = () => {
+  const showMovies = () => {
     if (data.list && data.list.length) {
       return data.list.map((item, index) => {
         return (
           <div className={styles.listItem} key={index}>
             <div><b>Name:</b> {item.name}</div>
-            <div><b>Surname:</b> {item.surname}</div>
-             <div> <b>Major:</b> {item.major} </div>
-            <div><b>GPA:</b> {item.GPA}</div>
+            <div><b>Genre:</b> {item.genre}</div>
+             <div> <b>Rate:</b> {item.rate} </div>
+            <div><b>Min:</b> {item.min}</div>
             
             <div>
             <button
@@ -50,9 +50,9 @@ const index = () => {
     </Head>
     <div className={styles.container}><Navbar />
       <div className={styles.title}>
-      <marquee bgcolor="#A9E0B8" direction="lefe" scrollamount="5" width="100%"><ins>Welcome to Student Data</ins></marquee></div>
+      <ins>Welcome to Movies Zone</ins></div>
       <div className={styles.list}>
-        {showStudents()}
+        {showMovies()}
       </div>
       
     </div>
