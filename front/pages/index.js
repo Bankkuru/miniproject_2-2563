@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { } from "react";
 import styles from "../styles/Index.module.css";
 import Navbar from "../components/navbar";
+
 const URL = "http://localhost/api/movies";
 const URL_SEL = "http://localhost/api/purchase";
 const fetcher = (key) => fetch(key).then((res) => res.json());
@@ -27,7 +28,8 @@ const index = () => {
             <div><b>Name:</b> {item.name}</div>
             <div><b>Genre:</b> {item.genre}</div>
              <div> <b>Rate:</b> {item.rate} </div>
-            <div><b>Min:</b> {item.min}</div>
+            <div><b>Min:</b> {item.min} hr</div>
+            <div><b>Date:</b> {item.date} </div>
             
             <div>
             <button
@@ -48,7 +50,7 @@ const index = () => {
        <Head>
         <title>Home Page</title>
     </Head>
-    <div className={styles.container}><div><Navbar /></div>
+    <div className={styles.container}><div className = {styles.Navbar}><Navbar /></div>
       <div className={styles.title}>
       <ins>Welcome to Movies Zone</ins></div>
       <div className={styles.list}>

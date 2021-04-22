@@ -3,15 +3,16 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/student.module.css";
 import withAuth from "../components/withAuth";
 import Navbar from "../components/navbar";
-const URL = "http://localhost/api/students";
+const URL = "http://localhost/api/movies";
 const admin = ({ token }) => {
   const [user, setUser] = useState({});
   const [movies, setMovies] = useState({});
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [major, setMajor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [rate, setRate] = useState("");
   const [min, setMin] = useState(0);
-  const [movie, setStudent] = useState({});
+  const [date, setDate] = useState("");
+  const [movie, setMovie] = useState({});
   useEffect(() => {
     getMovies();
     profileUser();
@@ -32,7 +33,7 @@ const admin = ({ token }) => {
   const getmovie = async (id) => {
     const result = await axios.get(`${URL}/${id}`)
     console.log('movie id: ', result.data)
-    setStudent(result.data)
+    setMovie(result.data)
 }
  
   const getMovies = async () => {
@@ -40,28 +41,30 @@ const admin = ({ token }) => {
     setMovies(result.data.list);
   };
 
-  const addStudent = async () => {
+  const addMovie = async () => {
     let result = await axios.post(URL, {
       name,
-      surname,
-      major,
+      genre,
+      rate,
       min,
+      date
     });
     console.log(result);
     getMovies();
   };
 
-  const deleteStudent = async (id) => {
+  const deleteMovie = async (id) => {
     let result = await axios.delete(`${URL}/${id}`);
     getMovies();
   };
 
-  const updateStudent = async (id) => {
+  const updateMovie = async (id) => {
     let result = await axios.put(`${URL}/${id}`, {
       name,
-      surname,
-      major,
+      genre,
+      rate,
       min,
+      date
     });
     console.log(result);
     getMovies();
@@ -73,9 +76,10 @@ const admin = ({ token }) => {
         return (
           <div className={styles.listItem} key={index}>
             <b>Name:</b> {item.name} <br />
-            <b>Surname:</b> {item.surname} <br />
-            <b>Major:</b> {item.major} <br />
-            <b>min:</b> {item.min}
+            <b>Genre:</b> {item.genre} <br />
+            <b>Rate:</b> {item.rate} <br />
+            <b>Min:</b> {item.min} hr<br />
+            <b>Date:</b> {item.date}
             <div className={styles.edit_button}>
               <button
                 className={styles.button_get}
@@ -85,13 +89,13 @@ const admin = ({ token }) => {
               </button>
               <button
                 className={styles.button_update}
-                onClick={() => updateStudent(item.id)}
+                onClick={() => updateMovie(item.id)}
               >
                 Update
               </button>
               <button
                 className={styles.button_delete}
-                onClick={() => deleteStudent(item.id)}
+                onClick={() => deleteMovie(item.id)}
               >
                 Delete
               </button>
@@ -106,7 +110,7 @@ const admin = ({ token }) => {
   return (
     <div className={styles.container}>
       <Navbar />
-      <h1><ins>Student Data Edit </ins></h1>
+      <h1><ins>Movie Data Edit </ins></h1>
       <div className={styles.form_add}>
         <h2>Add Movies</h2>
         Name:
@@ -115,17 +119,17 @@ const admin = ({ token }) => {
           name="name"
           onChange={(e) => setName(e.target.value)}
         ></input>
-        Surname:
+        Genre:
         <input
           type="text"
-          name="surname"
-          onChange={(e) => setSurname(e.target.value)}
+          name="genre"
+          onChange={(e) => setGenre(e.target.value)}
         ></input>
-        Major:
+        Rate:
         <input
           type="text"
-          name="major"
-          onChange={(e) => setMajor(e.target.value)}
+          name="rate"
+          onChange={(e) => setRate(e.target.value)}
         ></input>
         min:
         <input
@@ -133,16 +137,22 @@ const admin = ({ token }) => {
           name="min"
           onChange={(e) => setMin(e.target.value)}
         ></input>
+        Date:
+        <input
+          type="text"
+          name="date"
+          onChange={(e) => setDate(e.target.value)}
+        ></input>
         <button
           className={styles.button_add}
-          onClick={() => addStudent(name, surname, major, min)}
+          onClick={() => addMovie(name, genre, rate, min, date)}
         >
           Add
         </button>
       </div>
 
       <div className={styles.list}>{showMovies()}</div>
-      <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Surname:</b>{movie.surname} <b>  Major:</b>{movie.major}  <b>min:</b>{student.min}</div>
+      <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}</div>
     </div>
   );
 };
