@@ -6,14 +6,14 @@ import Navbar from "../components/navbar";
 const URL = "http://localhost/api/students";
 const admin = ({ token }) => {
   const [user, setUser] = useState({});
-  const [students, setStudents] = useState({});
+  const [movies, setMovies] = useState({});
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [major, setMajor] = useState("");
-  const [GPA, setGPA] = useState(0);
-  const [student, setStudent] = useState({});
+  const [min, setMin] = useState(0);
+  const [movie, setStudent] = useState({});
   useEffect(() => {
-    getStudents();
+    getMovies();
     profileUser();
   }, []);
   const profileUser = async () => {
@@ -29,15 +29,15 @@ const admin = ({ token }) => {
     }
   };
 
-  const getstudent = async (id) => {
+  const getmovie = async (id) => {
     const result = await axios.get(`${URL}/${id}`)
-    console.log('student id: ', result.data)
+    console.log('movie id: ', result.data)
     setStudent(result.data)
 }
  
-  const getStudents = async () => {
+  const getMovies = async () => {
     let result = await axios.get(URL);
-    setStudents(result.data.list);
+    setMovies(result.data.list);
   };
 
   const addStudent = async () => {
@@ -45,15 +45,15 @@ const admin = ({ token }) => {
       name,
       surname,
       major,
-      GPA,
+      min,
     });
     console.log(result);
-    getStudents();
+    getMovies();
   };
 
   const deleteStudent = async (id) => {
     let result = await axios.delete(`${URL}/${id}`);
-    getStudents();
+    getMovies();
   };
 
   const updateStudent = async (id) => {
@@ -61,25 +61,25 @@ const admin = ({ token }) => {
       name,
       surname,
       major,
-      GPA,
+      min,
     });
     console.log(result);
-    getStudents();
+    getMovies();
   };
 
-  const showStudents = () => {
-    if (students && students.length) {
-      return students.map((item, index) => {
+  const showMovies = () => {
+    if (movies && movies.length) {
+      return movies.map((item, index) => {
         return (
           <div className={styles.listItem} key={index}>
             <b>Name:</b> {item.name} <br />
             <b>Surname:</b> {item.surname} <br />
             <b>Major:</b> {item.major} <br />
-            <b>GPA:</b> {item.GPA}
+            <b>min:</b> {item.min}
             <div className={styles.edit_button}>
               <button
                 className={styles.button_get}
-                onClick={() => getstudent(item.id)}
+                onClick={() => getmovie(item.id)}
               >
                 Get
               </button>
@@ -108,7 +108,7 @@ const admin = ({ token }) => {
       <Navbar />
       <h1><ins>Student Data Edit </ins></h1>
       <div className={styles.form_add}>
-        <h2>Add Students</h2>
+        <h2>Add Movies</h2>
         Name:
         <input
           type="text"
@@ -127,22 +127,22 @@ const admin = ({ token }) => {
           name="major"
           onChange={(e) => setMajor(e.target.value)}
         ></input>
-        GPA:
+        min:
         <input
           type="number"
-          name="GPA"
-          onChange={(e) => setGPA(e.target.value)}
+          name="min"
+          onChange={(e) => setMin(e.target.value)}
         ></input>
         <button
           className={styles.button_add}
-          onClick={() => addStudent(name, surname, major, GPA)}
+          onClick={() => addStudent(name, surname, major, min)}
         >
           Add
         </button>
       </div>
 
-      <div className={styles.list}>{showStudents()}</div>
-      <div className={styles.list1}><b><i><ins>(selected student)</ins></i></b> <b>  Name:</b>{student.name}<b>  Surname:</b>{student.surname} <b>  Major:</b>{student.major}  <b>GPA:</b>{student.GPA}</div>
+      <div className={styles.list}>{showMovies()}</div>
+      <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Surname:</b>{movie.surname} <b>  Major:</b>{movie.major}  <b>min:</b>{student.min}</div>
     </div>
   );
 };

@@ -48,7 +48,7 @@ const index = () => {
        <Head>
         <title>Home Page</title>
     </Head>
-    <div className={styles.container}><Navbar />
+    <div className={styles.container}><div><Navbar /></div>
       <div className={styles.title}>
       <ins>Welcome to Movies Zone</ins></div>
       <div className={styles.list}>
