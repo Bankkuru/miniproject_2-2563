@@ -9,6 +9,10 @@ const Navbar = () => (
         <Link href="/foo"><a> <b>Foo </b></a></Link> |
         <Link href="/studentedit"><a> <b>Student Edit</b> </a></Link> |
         <Link href="/getConfig"><a><b> Config</b> </a></Link> | 
+
+
+
+        
         <Link href="/login"><a> <b>Login</b> </a></Link> | 
         <Link href="/logout"><a> <b>Logout</b> </a></Link> 
         
