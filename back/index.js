@@ -108,7 +108,7 @@ router.get("/", (req, res, next) => {
 
   let movies = {
       list: [
-        { "id": 1, "name": "Nobody","genre": "Action","rate": "18+" ,"min": 1.45,"date":"12/3/2021" },
+        { "id": 1, "name": "Nobody","genre": "Action","rate": "18+" ,"min": 1.45,"date":"12/3/2021", },
         { "id": 2, "name": "Mortal Kombate","genre": "Action","rate": "13" ,"min": 2.45, "date":"12/3/2021" } ]
     }
   

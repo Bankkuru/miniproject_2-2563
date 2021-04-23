@@ -4,6 +4,7 @@ import styles from "../styles/Index.module.css";
 const Navbar = () => (
     <div className = {styles.Navbar}>
         <Link href="/"><a > <b>Home</b></a></Link> |
+        <Link href="/review"><a > <b>Review</b></a></Link> |
         <Link href="/profile"><a> <b>Profile</b> </a></Link> | 
         <Link href="/foo"><a> <b>Foo </b></a></Link> |
         <Link href="/studentedit"><a> <b>Student Edit</b> </a></Link> |
