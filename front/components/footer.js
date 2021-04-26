@@ -3,7 +3,7 @@ import styles from "../styles/footer.module.css";
 const footer = () =>{
 
     return(
-
+       <div>
         <footer class="site-footer">
         <div class="container">
           <div class="row">
@@ -56,6 +56,6 @@ const footer = () =>{
           </div>
         </div>
   </footer>
-
+  </div>
     )
 }

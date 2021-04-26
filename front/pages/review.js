@@ -30,7 +30,7 @@ const review = () =>{
                <div> <b>Rate:</b> {item.rate} </div>
               <div><b>Min:</b> {item.min} hr</div>
               <div><b>Date:</b> {item.date} </div>
-              
+              <div><b>detail:</b> {item.detail} </div>
               <div>
               <button
                 className={styles.btn}

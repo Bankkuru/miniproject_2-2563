@@ -12,6 +12,7 @@ const admin = ({ token }) => {
   const [rate, setRate] = useState("");
   const [min, setMin] = useState(0);
   const [date, setDate] = useState("");
+  const [detail, setDetail] = useState("");
   const [movie, setMovie] = useState({});
   useEffect(() => {
     getMovies();
@@ -47,7 +48,8 @@ const admin = ({ token }) => {
       genre,
       rate,
       min,
-      date
+      date,
+      detail
     });
     console.log(result);
     getMovies();
@@ -64,7 +66,8 @@ const admin = ({ token }) => {
       genre,
       rate,
       min,
-      date
+      date,
+      detail
     });
     console.log(result);
     getMovies();
@@ -80,6 +83,7 @@ const admin = ({ token }) => {
             <b>Rate:</b> {item.rate} <br />
             <b>Min:</b> {item.min} hr<br />
             <b>Date:</b> {item.date}
+            <b>Detail:</b> {item.detail}
             <div className={styles.edit_button}>
               <button
                 className={styles.button_get}
@@ -143,16 +147,22 @@ const admin = ({ token }) => {
           name="date"
           onChange={(e) => setDate(e.target.value)}
         ></input>
+        Detail:
+        <input
+          type="text"
+          name="detail"
+          onChange={(e) => setDetail(e.target.value)}
+        ></input>
         <button
           className={styles.button_add}
-          onClick={() => addMovie(name, genre, rate, min, date)}
+          onClick={() => addMovie(name, genre, rate, min, date, detail)}
         >
           Add
         </button>
       </div>
 
       <div className={styles.list}>{showMovies()}</div>
-      <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}</div>
+      <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}<b>  Detail:</b>{movie.detail}</div>
     </div>
   );
 };

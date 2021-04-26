@@ -108,8 +108,8 @@ router.get("/", (req, res, next) => {
 
   let movies = {
       list: [
-        { "id": 1, "name": "Nobody","genre": "Action","rate": "18+" ,"min": 1.45,"date":"12/3/2021", },
-        { "id": 2, "name": "Mortal Kombate","genre": "Action","rate": "13" ,"min": 2.45, "date":"12/3/2021" } ]
+        { "id": 1, "name": "Nobody","genre": "Action","rate": "18+" ,"min": 1.45,"date":"12/3/2021","detail":"นี่มันหนังชีวิต John Wick หลังวางมือปะเนี่ยโคตรมัน โคตรเท่ โคตรเพลิน โคตรสนุก บันเทิงชิบ"},
+        { "id": 2, "name": "Mortal Kombate","genre": "Action","rate": "13" ,"min": 2.45, "date":"12/3/2021","detail":"ปปปปปปปปปปป " } ]
     }
   
   
@@ -127,6 +127,7 @@ router.get("/", (req, res, next) => {
       newmovie.rate = req.body.rate;
       newmovie.min= req.body.min;
       newmovie.date= req.body.date;
+      newmovie.detail= req.body.detail;
       movies = { list: [...movies.list, newmovie] };
       res.json(movies);
     });
@@ -144,6 +145,7 @@ router.get("/", (req, res, next) => {
       movies.list[id].rate = req.body.rate;
       movies.list[id].min = req.body.min;
       movies.list[id].date = req.body.date;
+      movies.list[id].detail = req.body.detail;
       res.json(movies.list);
     })
     .delete((req, res) => {
