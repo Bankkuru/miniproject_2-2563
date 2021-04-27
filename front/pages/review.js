@@ -5,6 +5,8 @@ import axios from "axios";
 import React, { } from "react";
 import styles from "../styles/Index.module.css";
 import Navbar from "../components/navbar";
+import { Container, Row, Col } from "react-bootstrap";
+// import 'bootstrap/dist/css/bootstrap.css'
 
 const URL = "http://localhost/api/movies";
 const URL_SEL = "http://localhost/api/purchase";
@@ -24,10 +26,11 @@ const review = () =>{
       if (data.list && data.list.length) {
         return data.list.map((item, index) => {
           return (
+            <Col className="col-lg-12 col-12">
             <div className={styles.listItem} key={index}>
               <div><b>Name:</b> {item.name}</div>
               <div><b>Genre:</b> {item.genre}</div>
-               <div> <b>Rate:</b> {item.rate} </div>
+              <div> <b>Rate:</b> {item.rate} </div>
               <div><b>Min:</b> {item.min} hr</div>
               <div><b>Date:</b> {item.date} </div>
               <div><b>detail:</b> {item.detail} </div>
@@ -39,6 +42,7 @@ const review = () =>{
                 Select
               </button></div>
             </div>
+            </Col>
           );
         });
       } else {
@@ -52,7 +56,7 @@ const review = () =>{
     </Head>
     <div className={styles.container}><div className = {styles.Navbar}><Navbar /></div>
       <div className={styles.list}>
-        {showMovies()}
+       <Row>{showMovies()}</Row> 
       </div>
       
     </div>

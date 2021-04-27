@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/student.module.css";
 import withAuth from "../components/withAuth";
 import Navbar from "../components/navbar";
+import { Container, Row, Col } from "react-bootstrap";
 const URL = "http://localhost/api/movies";
 const admin = ({ token }) => {
   const [user, setUser] = useState({});
@@ -77,6 +78,7 @@ const admin = ({ token }) => {
     if (movies && movies.length) {
       return movies.map((item, index) => {
         return (
+          <Col className="col-lg-12 col-12">
           <div className={styles.listItem} key={index}>
             <b>Name:</b> {item.name} <br />
             <b>Genre:</b> {item.genre} <br />
@@ -105,6 +107,7 @@ const admin = ({ token }) => {
               </button>
             </div>
           </div>
+          </Col>
         );
       });
     } else {
@@ -114,40 +117,40 @@ const admin = ({ token }) => {
   return (
     <div className={styles.container}>
       <Navbar />
-      <h1><ins>Movie Data Edit </ins></h1>
+      <h1 className={styles.hh}><ins>Movie Data Edit </ins></h1>
       <div className={styles.form_add}>
-        <h2>Add Movies</h2>
-        Name:
+        <h2 className={styles.hh}>Add Movies</h2>
+      <div className={styles.hh}>Name:</div>  
         <input
           type="text"
           name="name"
           onChange={(e) => setName(e.target.value)}
-        ></input>
-        Genre:
+        ></input >
+       <div className={styles.hh}>Genre:</div> 
         <input
           type="text"
           name="genre"
           onChange={(e) => setGenre(e.target.value)}
         ></input>
-        Rate:
+       <div className={styles.hh}>Rate:</div> 
         <input
           type="text"
           name="rate"
           onChange={(e) => setRate(e.target.value)}
         ></input>
-        min:
+       <div className={styles.hh}>min:</div>
         <input
           type="number"
           name="min"
           onChange={(e) => setMin(e.target.value)}
         ></input>
-        Date:
+        <div className={styles.hh}>Date:</div>
         <input
           type="text"
           name="date"
           onChange={(e) => setDate(e.target.value)}
         ></input>
-        Detail:
+      <div className={styles.hh}>Detail:</div>  
         <input
           type="text"
           name="detail"
@@ -161,7 +164,7 @@ const admin = ({ token }) => {
         </button>
       </div>
 
-      <div className={styles.list}>{showMovies()}</div>
+      <div className={styles.list}><Row>{showMovies()}</Row></div>
       <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}<b>  Detail:</b>{movie.detail}</div>
     </div>
   );

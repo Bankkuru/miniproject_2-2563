@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/bg1.jpg);
+    background-color: rgb(34, 34, 34);
 }
 
 .title {
@@ -16,7 +16,7 @@
     padding-top: 60px;
     padding-bottom: 40px;
     font-weight: bold;
-    color: brown;
+    color: red;
 }
 
 .list {
@@ -28,12 +28,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width:auto;
-    align-items: center;
+    width:auto; 
+    height:auto;
+    align-items:left ;
     margin: 10px;
     border: 4px solid rgb(255, 59, 59);
     padding: 2rem;
     border-radius: 5px;
+    background-color: antiquewhite;
 }
 .listItem > div{
     margin: 5px 0px;
@@ -67,10 +69,10 @@
     border: 2px solid brown;
 }
 
-.Navbar {
+.Navbar  {
     min-height: 100px;
     width: 100%;
-    display: flex;
+     display: flex; 
     justify-content: right;
     align-items: right;
     font-size: 22px;

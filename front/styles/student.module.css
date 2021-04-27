@@ -69,23 +69,24 @@
   width: 80vw;
 }
 .container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+  /* min-height: 100vh; */
+  /* padding: 0 0.5rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 10px solid blue;
-  background-color: antiquewhite;
+  border: 10px ;
+  background-color: rgb(34, 34, 34);
 }
 .listItem {
   display: flex;
   flex-direction: column;
   margin: 20px;
   padding: 10px;
-  border: 2px solid green;
+  border: 2px solid red;
   font-size: 1.4rem;
   text-align: center;
+  background-color: antiquewhite;
 }
 .form_add {
   display: flex;
@@ -95,4 +96,7 @@
   border: 2px solid green;
   font-size: 1.4rem;
   text-align: center;
+}
+.hh{
+  color: red;
 }
