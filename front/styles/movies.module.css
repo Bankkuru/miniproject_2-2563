@@ -93,7 +93,8 @@
   flex-direction: column;
   margin: 20px;
   padding: 20px;
-  border: 2px solid green;
+  columns: 12;
+  border: 2px solid red;
   font-size: 1.4rem;
   text-align: center;
 }

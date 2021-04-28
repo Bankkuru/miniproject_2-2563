@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { } from "react";
 import styles from "../styles/Index.module.css";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 
 
@@ -19,8 +20,10 @@ const index = () => {
     <div className={styles.container}><div className = {styles.Navbar}><Navbar /></div>
       <div className={styles.title}>
       <ins>Welcome to Movies Zone</ins></div>
-      
-      
+      <div>
+        <h1>comming zoon</h1>
+      </div>
+      <Footer />
     </div>
     </Layout>
   );

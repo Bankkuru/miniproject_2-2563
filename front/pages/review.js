@@ -6,6 +6,7 @@ import React, { } from "react";
 import styles from "../styles/Index.module.css";
 import Navbar from "../components/navbar";
 import { Container, Row, Col } from "react-bootstrap";
+import Footer from "../components/footer";
 // import 'bootstrap/dist/css/bootstrap.css'
 
 const URL = "http://localhost/api/movies";
@@ -60,6 +61,7 @@ const review = () =>{
       </div>
       
     </div>
+    <Footer />
     </Layout>
 </div>
 );

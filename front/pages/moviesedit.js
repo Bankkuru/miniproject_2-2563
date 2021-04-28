@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import styles from "../styles/student.module.css";
+import styles from "../styles/movies.module.css";
 import withAuth from "../components/withAuth";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 import { Container, Row, Col } from "react-bootstrap";
+
 const URL = "http://localhost/api/movies";
 const admin = ({ token }) => {
   const [user, setUser] = useState({});
@@ -120,6 +122,8 @@ const admin = ({ token }) => {
       <h1 className={styles.hh}><ins>Movie Data Edit </ins></h1>
       <div className={styles.form_add}>
         <h2 className={styles.hh}>Add Movies</h2>
+        <div>
+          <div><input type = "file" accept = 'image/*'></input></div>
       <div className={styles.hh}>Name:</div>  
         <input
           type="text"
@@ -163,10 +167,10 @@ const admin = ({ token }) => {
           Add
         </button>
       </div>
-
+      <div className={styles.list1}><Row><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}<b>  Detail:</b>{movie.detail}</Row></div>
       <div className={styles.list}><Row>{showMovies()}</Row></div>
-      <div className={styles.list1}><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}<b>  Detail:</b>{movie.detail}</div>
-    </div>
+      <Footer />
+    </div></div>
   );
 };
 export default withAuth(admin);
