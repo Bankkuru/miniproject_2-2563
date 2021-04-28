@@ -72,18 +72,19 @@ export default function Login({ token }) {
       </Head>
       <div className={styles.container}>
         <Navbar />
-        <h1>Login</h1>
-        <div>
+        <div className ={styles.gridlogin}>
+        <h1 >Login</h1>
+        {/* <div>
           <b>Token:</b> {token.substring(0, 15)}...
           <button className={styles.btn1} onClick={copyText}> Copy token </button>
-        </div>
+        </div> */}
         <br />
         <div>Status: {status}</div>
         <br />
         {loginForm()}
         <div>
           <button className={styles.btn2} onClick={login}>Login</button>
-        </div>
+        </div></div>
       </div>
     </Layout>
   );

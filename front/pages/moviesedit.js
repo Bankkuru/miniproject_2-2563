@@ -121,45 +121,51 @@ const admin = ({ token }) => {
       <Navbar />
       <h1 className={styles.hh}><ins>Movie Data Edit </ins></h1>
       <div className={styles.form_add}>
+        <div className={styles.c} > 
         <h2 className={styles.hh}>Add Movies</h2>
-        <div>
           <div><input type = "file" accept = 'image/*'></input></div>
       <div className={styles.hh}>Name:</div>  
         <input
           type="text"
           name="name"
+          size="90"
           onChange={(e) => setName(e.target.value)}
         ></input >
        <div className={styles.hh}>Genre:</div> 
         <input
           type="text"
           name="genre"
+          size="90"
           onChange={(e) => setGenre(e.target.value)}
         ></input>
        <div className={styles.hh}>Rate:</div> 
         <input
           type="text"
           name="rate"
+          size="90"
           onChange={(e) => setRate(e.target.value)}
         ></input>
        <div className={styles.hh}>min:</div>
         <input
           type="number"
           name="min"
+         
           onChange={(e) => setMin(e.target.value)}
         ></input>
         <div className={styles.hh}>Date:</div>
         <input
           type="text"
           name="date"
+          size="90"
           onChange={(e) => setDate(e.target.value)}
         ></input>
       <div className={styles.hh}>Detail:</div>  
         <input
           type="text"
           name="detail"
+          size="90"
           onChange={(e) => setDetail(e.target.value)}
-        ></input>
+        ></input><br/>
         <button
           className={styles.button_add}
           onClick={() => addMovie(name, genre, rate, min, date, detail)}
@@ -169,8 +175,8 @@ const admin = ({ token }) => {
       </div>
       <div className={styles.list1}><Row><b><i><ins>(selected movie)</ins></i></b> <b>  Name:</b>{movie.name}<b>  Genre:</b>{movie.genre} <b>  Rate:</b>{movie.rate}  <b>Min:</b>{movie.min}<b>  Date:</b>{movie.date}<b>  Detail:</b>{movie.detail}</Row></div>
       <div className={styles.list}><Row>{showMovies()}</Row></div>
-      <Footer />
-    </div></div>
+     
+    </div> <Footer /></div>
   );
 };
 export default withAuth(admin);

@@ -21,7 +21,7 @@ const index = () => {
       <div className={styles.title}>
       <ins>Welcome to Movies Zone</ins></div>
       <div>
-        <h1>comming zoon</h1>
+        <h1 >Comming Soon</h1>
       </div>
       <Footer />
     </div>

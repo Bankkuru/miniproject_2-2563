@@ -1,11 +1,11 @@
 .container {
     /* min-height: 100vh; */
-    padding: 0 0.5rem;
+    /* padding: 0 0.5rem; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: rgb(255, 255, 255);
 }
 
 .content {
@@ -16,6 +16,7 @@
     display: grid;
     grid-template-columns: 100px auto;
     margin-bottom: 16px;
+    border:  solid rgb(255, 59, 59);
 }
 
 .gridContainer>div {
@@ -130,4 +131,14 @@
       font-size: 1rem;
       margin-top: 10px;
       border: 2px solid rgb(10, 152, 192);
+  }
+
+  .gridlogin
+  {
+    
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: rgb(248, 157, 38);
+    border:  solid yellow ;  
   }
