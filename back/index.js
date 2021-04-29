@@ -108,8 +108,10 @@ router.get("/", (req, res, next) => {
 
   let movies = {
       list: [
-        { "id": 1, "name": "Nobody","genre": "Action","rate": "18+" ,"min": 1.45,"date":"12/3/2021","detail":"นี่มันหนังชีวิต John Wick หลังวางมือปะเนี่ยโคตรมัน โคตรเท่ โคตรเพลิน โคตรสนุก บันเทิงชิบ"},
-        { "id": 2, "name": "Mortal Kombate","genre": "Action","rate": "13" ,"min": 2.45, "date":"12/3/2021","detail":"ปปปปปปปปปปป " } ]
+        { "id": 1,"imgurl":"https://i.ytimg.com/vi/hIkdya64RAU/movieposter_en.jpg", 
+        "name": "Nobody","genre": "Action","rate": "18+" ,"min": 1.45,"date":"12/3/2021","detail":"นี่มันหนังชีวิต John Wick หลังวางมือปะเนี่ยโคตรมัน โคตรเท่ โคตรเพลิน โคตรสนุก บันเทิงชิบ"},
+        { "id": 2,"imgurl":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTsiiHsyEslOV2_kCCDMNYqtjt4MUbTcuXtf_j4sW0yljsBLOmf ", "name": "Mortal Kombat","genre": "Action","rate": "13" ,"min": 2.45, "date":"12/3/2021","detail":"สิ่งที่โดนเด่นในหนังเวอร์ชั่นนี้คงหนีไม่พ้น คิวบู๊ ฉากต่อสู้กันของแค่ละตัวละคร ที่เรียกได้ว่าโหดสัสจัดเต็ม สมกับเรท R กันเลยทีเดียว เลือดเป็นเลือด แขนขาดเป็นแขนขาด สะใจมากจริง ๆ แต่ในด้านเนื้อเรื่องนั้นดูเหมือนว่าไม่ได้ดี หรือไม่ได้แย่ มีความพยายามที่จะเล่าเรื่องเผื่อคนที่ไม่ได้เล่นเกมมา ได้เข้าใจ Point หลักของเรื่อง จะได้ไม่งง รวมไปถึงการปูทางไปภาคต่อ 7/10 " },
+        { "id": 3,"imgurl":"https://richmondreviewers.com/wp-content/uploads/2020/07/2-3-e1595332668631.jpg ", "name": "แสบสนิทศิษย์ส่ายหน้า","genre": "commedy","rate": "13" ,"min": 1.36, "date":"26/3/2006","detail":"ภาพยนตร์ชื่อดังในปี 2549 ที่นำแสดงโดยแดน วรเวช และจ๋า ณัฐฐาวีรนุช พ่วงมาด้วยนักแสดงตลกชื่อดังอย่าง น้าค่อม ชวนชื่น, จตุรงค์ พลบูรณ์ , โก๊ะตี๋, จิ้ม ชวนชื่น และดาราตลกท่านอื่นอย่างคับคั่ง รับประกันความฮา" } ]
     }
   
   
@@ -128,6 +130,7 @@ router.get("/", (req, res, next) => {
       newmovie.min= req.body.min;
       newmovie.date= req.body.date;
       newmovie.detail= req.body.detail;
+      newmovie.imgurl= req.body.imgurl;
       movies = { list: [...movies.list, newmovie] };
       res.json(movies);
     });
@@ -146,6 +149,7 @@ router.get("/", (req, res, next) => {
       movies.list[id].min = req.body.min;
       movies.list[id].date = req.body.date;
       movies.list[id].detail = req.body.detail;
+      movies.list[id].imgurl= req.body.imgurl;
       res.json(movies.list);
     })
     .delete((req, res) => {

@@ -29,19 +29,20 @@ const review = () =>{
           return (
             <Col className="col-lg-12 col-12">
             <div className={styles.listItem} key={index}>
+            <div><img src = {item.imgurl}></img> </div>   
               <div><b>Name:</b> {item.name}</div>
               <div><b>Genre:</b> {item.genre}</div>
               <div> <b>Rate:</b> {item.rate} </div>
               <div><b>Min:</b> {item.min} hr</div>
               <div><b>Date:</b> {item.date} </div>
               <div><b>detail:</b> {item.detail} </div>
-              <div>
+              {/* <div>
               <button
                 className={styles.btn}
                 onClick={() => selStu(item.id)}
               >
                 Select
-              </button></div>
+              </button></div> */}
             </div>
             </Col>
           );
@@ -53,9 +54,10 @@ const review = () =>{
     return(<div>
        <Layout>
        <Head>
-        <title>Home Page</title>
+        <title>Movie Zone</title>
     </Head>
     <div className={styles.container}><div className = {styles.Navbar}><Navbar /></div>
+    <h1 className={styles.head}>Movies Review</h1>
       <div className={styles.list}>
        <Row>{showMovies()}</Row> 
       </div>

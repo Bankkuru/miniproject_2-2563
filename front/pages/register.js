@@ -75,17 +75,12 @@ export default function Register({ token }) {
         <Layout>
             <Head>
                 <title>Register Page</title>
-            </Head>
+            </Head><Navbar />
             <div className={styles.container}>
-                <Navbar />
+                
+                <div className ={styles.gridlogin} >
                 <h1>Register</h1>
-                <div><b>Token:</b> {token.substring(0, 15)}...
-                <button
-                className={styles.btn1}
-                        onClick={() => { navigator.clipboard.writeText(token) }}>
-                        Copy token
-                </button>
-                </div>
+
                 <br />
             <b>Status: </b> <i>{status}</i>
                 <br /><br />
@@ -96,6 +91,7 @@ export default function Register({ token }) {
                 <div>
                     <button className={styles.btn}
                     onClick={register}>Register</button>
+                </div>
                 </div>
             </div>
         </Layout>

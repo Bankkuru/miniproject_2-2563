@@ -7,7 +7,7 @@ const footer = () =>{
        
    <div className={styles.footer}>
        <a className = {styles.text_left}>
-         นายวิทวัส เซี่ยวภู่</a>
+    Copyright &copy;2021     นายวิทวัส เซี่ยวภู่</a>
    </div >
       
     )

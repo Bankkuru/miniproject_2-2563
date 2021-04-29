@@ -5,8 +5,9 @@ import withAuth from "../components/withAuth";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { Container, Row, Col } from "react-bootstrap";
+import config from '../config/config';
 
-const URL = "http://localhost/api/movies";
+const API_URL = "http://localhost/api/movies";
 const admin = ({ token }) => {
   const [user, setUser] = useState({});
   const [movies, setMovies] = useState({});
@@ -16,11 +17,22 @@ const admin = ({ token }) => {
   const [min, setMin] = useState(0);
   const [date, setDate] = useState("");
   const [detail, setDetail] = useState("");
+  const [imgurl, setImgurl] = useState( );
   const [movie, setMovie] = useState({});
+
+  const handleChangeImage = e =>{
+    const file = e.target.files[0];
+    const imgurl = URL.createObjectURL(file);
+    setImgurl(imgurl);
+  }
+
+
   useEffect(() => {
     getMovies();
+    setImgurl();
     profileUser();
   }, []);
+
   const profileUser = async () => {
     try {
       
@@ -35,46 +47,49 @@ const admin = ({ token }) => {
   };
 
   const getmovie = async (id) => {
-    const result = await axios.get(`${URL}/${id}`)
+    const result = await axios.get(`${API_URL}/${id}`)
     console.log('movie id: ', result.data)
     setMovie(result.data)
 }
  
   const getMovies = async () => {
-    let result = await axios.get(URL);
+    let result = await axios.get(API_URL);
     setMovies(result.data.list);
   };
 
   const addMovie = async () => {
-    let result = await axios.post(URL, {
+    let result = await axios.post(API_URL, {
       name,
       genre,
       rate,
       min,
       date,
-      detail
+      detail,
+      imgurl
     });
     console.log(result);
     getMovies();
   };
 
   const deleteMovie = async (id) => {
-    let result = await axios.delete(`${URL}/${id}`);
+    let result = await axios.delete(`${API_URL}/${id}`);
     getMovies();
   };
 
   const updateMovie = async (id) => {
-    let result = await axios.put(`${URL}/${id}`, {
+    let result = await axios.put(`${API_URL}/${id}`, {
       name,
       genre,
       rate,
       min,
       date,
-      detail
+      detail,
+      imgurl
     });
     console.log(result);
     getMovies();
   };
+
 
   const showMovies = () => {
     if (movies && movies.length) {
@@ -82,12 +97,13 @@ const admin = ({ token }) => {
         return (
           <Col className="col-lg-12 col-12">
           <div className={styles.listItem} key={index}>
+          <div><img src={item.imgurl } style={{ width: "690px", height: "400px" }} /></div>
             <b>Name:</b> {item.name} <br />
             <b>Genre:</b> {item.genre} <br />
             <b>Rate:</b> {item.rate} <br />
             <b>Min:</b> {item.min} hr<br />
             <b>Date:</b> {item.date}
-            <b>Detail:</b> {item.detail}
+            <b>Detail:</b> <div className = {styles.textarea}>{item.detail}</div>
             <div className={styles.edit_button}>
               <button
                 className={styles.button_get}
@@ -123,26 +139,30 @@ const admin = ({ token }) => {
       <div className={styles.form_add}>
         <div className={styles.c} > 
         <h2 className={styles.hh}>Add Movies</h2>
-          <div><input type = "file" accept = 'image/*'></input></div>
-      <div className={styles.hh}>Name:</div>  
+        <div className={styles.hh} >Pic:</div>  
+        <label >
+          <img className='image' src={imgurl} />
+          <input className='input-file' type='file' onChange={handleChangeImage} />
+        </label>
+      <div className={styles.hh} >Name:</div>  
         <input
           type="text"
           name="name"
-          size="90"
+          
           onChange={(e) => setName(e.target.value)}
         ></input >
        <div className={styles.hh}>Genre:</div> 
         <input
           type="text"
           name="genre"
-          size="90"
+          
           onChange={(e) => setGenre(e.target.value)}
         ></input>
        <div className={styles.hh}>Rate:</div> 
         <input
           type="text"
           name="rate"
-          size="90"
+          
           onChange={(e) => setRate(e.target.value)}
         ></input>
        <div className={styles.hh}>min:</div>
@@ -156,19 +176,19 @@ const admin = ({ token }) => {
         <input
           type="text"
           name="date"
-          size="90"
+          
           onChange={(e) => setDate(e.target.value)}
         ></input>
       <div className={styles.hh}>Detail:</div>  
-        <input
+        <textarea
           type="text"
           name="detail"
-          size="90"
+          rows="10" cols="60"
           onChange={(e) => setDetail(e.target.value)}
-        ></input><br/>
+        ></textarea><br/>
         <button
           className={styles.button_add}
-          onClick={() => addMovie(name, genre, rate, min, date, detail)}
+          onClick={() => addMovie(imgurl,name, genre, rate, min, date, detail)}
         >
           Add
         </button>
